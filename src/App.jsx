@@ -18,6 +18,9 @@ if(name === 'userName'){
     e.preventDefault();
     if(userName === 'user' && password === 'password'){
       setMessage("Welcome, user!");
+      setUserName('');
+      setPassword('');
+      
     }
     else {
        setForInvalid("Invalid username or password");

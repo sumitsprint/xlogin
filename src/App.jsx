@@ -18,7 +18,7 @@ if(name === 'userName'){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-        if (!username.trim() || !password.trim()) {
+        if (!userName.trim() || !password.trim()) {
       setMessage("Both fields are required.");
       return;
     }

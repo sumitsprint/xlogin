@@ -1,71 +1,73 @@
-
-
-import {  useState } from 'react'
+import { useState } from "react";
 
 function App() {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-   const [message, setMessage] = useState(""); 
-   
- const handleChange = (e) => {
-const {name, value} = e.target;
-if(name === 'userName'){
-  setUserName(value);
-} else if (name === 'password'){
-  setPassword(value);
-}
-  }
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "userName") {
+      setUserName(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-        if (!userName.trim() || !password.trim()) {
+    if (!userName.trim() || !password.trim()) {
       setMessage("Both fields are required.");
       return;
     }
-     if (userName === "user" && password === "password") {
+    if (userName === "user" && password === "password") {
       setMessage("Welcome, user!");
     } else {
       setMessage("Invalid username or password");
     }
-  }
+  };
 
-  
-  
   return (
-  
-      <div>
-   
-
+    <div>
       <h1>Login Page</h1>
 
       {message && (
-        <p role="alert" >
+        <p role="alert">
           {message}
         </p>
       )}
-   
-  <form onSubmit = {handleSubmit}>
 
-    <div>
-      <label htmlFor='userName'>User Name:</label>
-      <input placeholder="username" id = 'userName' value={userName} type = 'text' name = "userName" onChange= {handleChange} required/>
-      </div>
-    <div>
-      <label htmlFor='password'>Password:</label>
-      <input placeholder="password" id = 'password' value={password} type = 'password' name = "password" onChange= {handleChange} required/>
-      </div>
-      <button type = 'submit'>Submit</button>
-    
-     </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="userName">Username</label>
+          <input
+            placeholder="username"
+            id="userName"
+            value={userName}
+            type="text"
+            name="userName"
+            onChange={handleChange}
+            required
+          />
+        </div>
 
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            placeholder="password"
+            id="password"
+            value={password}
+            type="password"
+            name="password"
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-       
-      </div>
-     
-    
-  )
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
-export default App
-
-
+export default App;

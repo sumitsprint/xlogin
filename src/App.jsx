@@ -1,34 +1,58 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+   const [message, setMessage] = useState(""); 
+ const handleChange = (e) => {
+const {name, value} = e.target;
+if(name === 'userName'){
+  setUserName(value);
+} else if (name === 'password'){
+  setPassword(value);
+}
+  }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(userName === 'user' && password === 'password'){
+      setMessage("Welcome, user!");
+    }
+    else {
+       setMessage("Invalid username or password");
+    }
+  }
+
+  if(message){
+     return(<div> <p role="alert">{message}</p></div>)
+  }
+  
   return (
-    <>
+  
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+   
+
+      <h1>Login Page</h1>
+   
+  <form onSubmit = {handleSubmit}>
+
+    <div>
+      <label htmlFor='userName'>User Name:</label>
+      <input placeholder="username" id = 'userName' value={userName} type = 'text' name = "userName" onChange= {handleChange} required/>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    <div>
+      <label htmlFor='password'>Password:</label>
+      <input placeholder="password" id = 'password' value={password} type = 'password' name = "password" onChange= {handleChange} required/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <button type = 'submit'>Submit</button>
+    
+     </form>
+
+
+       
+      </div>
+     
+    
   )
 }
 

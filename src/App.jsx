@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 
 function App() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
    const [message, setMessage] = useState(""); 
+   const [forInvalid, setForInvalid] = useState('');
  const handleChange = (e) => {
 const {name, value} = e.target;
 if(name === 'userName'){
@@ -19,7 +20,7 @@ if(name === 'userName'){
       setMessage("Welcome, user!");
     }
     else {
-       setMessage("Invalid username or password");
+       setForInvalid("Invalid username or password");
     }
   }
 
@@ -33,6 +34,8 @@ if(name === 'userName'){
    
 
       <h1>Login Page</h1>
+
+      {forInvalid && <p role="alert">{forInvalid}</p>}
    
   <form onSubmit = {handleSubmit}>
 

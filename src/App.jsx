@@ -22,7 +22,7 @@ if(name === 'userName'){
       setMessage("Both fields are required.");
       return;
     }
-    if(userName === 'user' && password === 'password'){
+    else if(userName === 'user' && password === 'password'){
       setMessage("Welcome, user!");
       setUserName('');
       setPassword('');

@@ -6,7 +6,7 @@ function App() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
    const [message, setMessage] = useState(""); 
-   const [forInvalid, setForInvalid] = useState('');
+   
  const handleChange = (e) => {
 const {name, value} = e.target;
 if(name === 'userName'){
@@ -22,20 +22,14 @@ if(name === 'userName'){
       setMessage("Both fields are required.");
       return;
     }
-    else if(userName === 'user' && password === 'password'){
+     if (userName === "user" && password === "password") {
       setMessage("Welcome, user!");
-      setUserName('');
-      setPassword('');
-      
-    }
-    else {
-       setForInvalid("Invalid username or password");
+    } else {
+      setMessage("Invalid username or password");
     }
   }
 
-  if(message){
-     return(<div> <p role="alert">{message}</p></div>)
-  }
+  
   
   return (
   
@@ -44,7 +38,11 @@ if(name === 'userName'){
 
       <h1>Login Page</h1>
 
-      {forInvalid && <p role="alert">{forInvalid}</p>}
+      {message && (
+        <p role="alert" >
+          {message}
+        </p>
+      )}
    
   <form onSubmit = {handleSubmit}>
 
